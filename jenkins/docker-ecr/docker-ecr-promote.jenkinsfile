@@ -42,9 +42,9 @@ pipeline {
                 script {
                     copyContainer(
                             sourceImagePath: "opensearchstaging/${IMAGE_REPOSITORY}:${IMAGE_TAG}",
-                            destinationImagePath: "public.ecr.aws/p5f6l6i3/${IMAGE_REPOSITORY}:${IMAGE_TAG}",
+                            destinationImagePath: "public.ecr.aws/k8e0v8t4/${IMAGE_REPOSITORY}:${IMAGE_TAG}",
                             destinationType: "ecr",
-                            destinationCredentialIdentifier: "public.ecr.aws/p5f6l6i3",
+                            destinationCredentialIdentifier: "public.ecr.aws/k8e0v8t4",
                             accountName: "${AWS_ACCOUNT_ARTIFACT}"
                     )
                 }

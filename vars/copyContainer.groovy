@@ -24,7 +24,7 @@ void call(Map args = [:]) {
             """
         }
     } else if (args.destinationType == 'ecr') {
-        withAWS(role: 'Upload_ECR_Image', roleAccount: "${args.accountName}", duration: 900, roleSessionName: 'jenkins-session') {
+        withAWS(role: 'OpenSearch-CI-ECR-ecr-role', roleAccount: "249373600424", duration: 900, roleSessionName: 'jenkins-session') {
             sh """
                 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${args.destinationCredentialIdentifier}
                 gcrane cp ${args.sourceImagePath} ${args.destinationImagePath}
