@@ -46,7 +46,7 @@ pipeline {
                             destinationImagePath: "public.ecr.aws/k8e0v8t4/${IMAGE_REPOSITORY}:${IMAGE_TAG}",
                             destinationType: "ecr",
                             destinationCredentialIdentifier: "public.ecr.aws/k8e0v8t4",
-                            accountName: "${AWS_ACCOUNT_ARTIFACT}"
+                            accountName: "d"
                     )
                 }
             }
