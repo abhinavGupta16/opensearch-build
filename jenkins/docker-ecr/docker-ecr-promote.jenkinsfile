@@ -7,7 +7,7 @@ pipeline {
     agent {
         docker {
             label 'AL2-X64'
-            image 'opensearchstaging/ci-runner:ubuntu2004-x64-docker-buildx0.6.3-qemu5.0-awscli1.22-jdk14'
+            image 'opensearchstaging/ci-runner:ci-runner-centos7-v1'
             args '-u root'
         }
     }
