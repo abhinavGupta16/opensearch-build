@@ -14,7 +14,7 @@ void call(Map args = [:]) {
         install_gcrane()
     }
 
-    sh 'docker logout'
+//    sh 'docker logout'
 
     if (args.destinationType == 'docker') {
         withCredentials([usernamePassword(credentialsId: args.destinationCredentialIdentifier, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
