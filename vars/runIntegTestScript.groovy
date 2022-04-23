@@ -12,6 +12,7 @@ void call(Map args = [:]) {
         './test.sh',
         'integ-test',
         "${args.testManifest}",
+        '--test-run-id 1',
         "--paths ${paths}",
     ].join(' '))
 }
@@ -22,7 +23,8 @@ String generatePaths(buildManifest, artifactRootUrl) {
     String platform = buildManifest.build.platform
     String architecture = buildManifest.build.architecture
     
-    String latestOpenSearchArtifactRootUrl = "https://ci.opensearch.org/ci/dbc/distribution-build-opensearch/${version}/latest/${platform}/${architecture}"
+    // only support tar for now. will use parameter for distribution in https://github.com/opensearch-project/opensearch-build/issues/1857
+    String latestOpenSearchArtifactRootUrl = "https://ci.opensearch.org/ci/dbc/distribution-build-opensearch/${version}/latest/${platform}/${architecture}/tar"
     return name == 'OpenSearch' ? 
         "opensearch=${artifactRootUrl}" :
         "opensearch=${latestOpenSearchArtifactRootUrl} opensearch-dashboards=${artifactRootUrl}"

@@ -47,7 +47,7 @@ class TestRunNonSecurityPerfTestScript extends BuildPipelineTest {
 
         assertThat(curlCommands.size(), equalTo(3))
         assertThat(curlCommands, hasItem(
-            "curl test://artifact.url --output tests/jenkins/data/opensearch-1.3.0-non-security-bundle.yml".toString()
+            "curl -sSL test://artifact.url --output tests/jenkins/data/opensearch-1.3.0-non-security-bundle.yml".toString()
         ))
 
         def s3DownloadCommands = getCommandExecutions('s3Download', 'bucket').findAll {
@@ -88,7 +88,7 @@ class TestRunNonSecurityPerfTestScript extends BuildPipelineTest {
 
         assertThat(testScriptCommands.size(), equalTo(1))
         assertThat(testScriptCommands, hasItem(
-            "./test.sh perf-test --stack test-single-1236-x64 --bundle-manifest tests/jenkins/data/opensearch-1.3.0-non-security-bundle.yml --config config.yml --without-security --workload nyc_taxis --test-iters 1 --warmup-iters 1".toString()
+            "./test.sh perf-test --stack test-single-1236-x64 --bundle-manifest tests/jenkins/data/opensearch-1.3.0-non-security-bundle.yml --config config.yml --without-security --workload nyc_taxis --test-iters 1 --warmup-iters 1 ".toString()
         ))
 
         def resultUploadScriptCommands = getCommandExecutions('s3Upload', 'test-results').findAll {
@@ -96,7 +96,7 @@ class TestRunNonSecurityPerfTestScript extends BuildPipelineTest {
         }
         assertThat(resultUploadScriptCommands.size(), equalTo(1))
         assertThat(resultUploadScriptCommands, hasItem(
-            "{file=test-results, bucket=test_bucket, path=perf-test/1.3.0/1236/linux/x64/test-results}".toString()
+            "{file=test-results, bucket=test_bucket, path=perf-test/1.3.0/1236/linux/x64/tar/test-results}".toString()
         ))
     }
 
